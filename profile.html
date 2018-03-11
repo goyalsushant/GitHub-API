@@ -1,8 +1,10 @@
 <h4>Profile</h4>
-	<label>Name:{{}}</label><br>
-	<label>ID:{{}}</label><br>
-	<label>Profile:{{}}</label><br>
-	<label>Profile Image:{{}}</label><br>
-	<label>Followers:{{}}</label><br>
-	<label>Following:{{}}</label><br>
+	<label>Name:{{vm.login}}</label><br>
+	<label>ID:{{vm.id}}</label><br>
+	<label>Profile:{{vm.html_url}}</label><br>
+	<label>Profile URL:{{vm.url}}</label><br>
+	<label>Profile Image:{{vm.avatar_url}}</label><br>
+	<label>Followers:{{vm.followers}}</label><br>
+	<label>Following:{{vm.following}}</label><br>
+	<label>No. of Repositories:{{vm.pr}}</label><br>
 <div class="panel panel-default" ui-view></div>

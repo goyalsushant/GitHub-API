@@ -7,14 +7,16 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
 		<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+		<script src="app.js"></script>
 		<base href="/">
 	</head>
-	<body>
+	<body ng-controller="MainCtrl as vm">
 	<div class="container">
 		<h3>GitHub REST API</h3>
-		<label>Enter the Username:</label>
-		<input type="text" placeholder="Username"/>
-		<button>Submit</button>
+		<label for="enter">Enter the Username:</label>
+		<input type="text" ng-model="user.name" placeholder="Username" name="enter">
+		<button ng-click="vm.fetchdata(user)">Submit</button>
+		<h4 ng-if="vm.loading===true">Loading...</h4>
 		<nav class="navbar navbar-expand-sm bg-light">
 			<ul class="nav navbar-nav">
 				<li class="nav-item"><a class="nav-link" ui-sref="profile">Profile</a></li>
@@ -23,10 +25,9 @@
 		</nav>
 		<div class="row">
 			<div class="span12">
-				<div class="well" ui-view></div>  
+				<div class="well" ui-view></div>
 			</div>
 		</div>
-		<script src="app.js"></script>
 	</div>
 	</body>
 </html>

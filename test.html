@@ -17,7 +17,9 @@
 			vm.data=true;
 			vm.data=res;
 			vm.name=res.data.name;
-			vm.location=res.data.location;
+			vm.id=res.data.id;
+			vm.login=res.data.login;
+			vm.url=res.data.url;
 			vm.loading.false;
 		}) 
 		}
@@ -30,6 +32,6 @@
 <button ng-click="vm.fetchdata(user)">Go!</button>
 <h4 ng-if="vm.loading===true">Loading...</h4>
 <h3>{{vm.data}}</h3>
-<h3 ng-hide="vm.data===false">{{vm.name}}---{{vm.location}}</h3>
+<h3 ng-hide="vm.data===false">{{vm.name}}</h3>
 </body>
 </html>
