@@ -18,7 +18,11 @@ var App = angular.module('routingDemoApp',['ui.router']);
 						vm.followers=res.data.followers;
 						vm.following=res.data.following;
 						vm.loading.false;
-					}) 
+					})
+				$http.get('https://api.github.com/users/' + user.name+'/repos').then(function(res1){
+						console.log(res1);
+						vm.repositorieslist=res1;
+					})					
 					}
 				}) 
 			App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
