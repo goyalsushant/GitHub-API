@@ -15,8 +15,9 @@
 	$http.get('https://api.github.com/users/'+user.name).then(function(res)
 		{
 			vm.data=true;
-			vm.name=res.data.name|| 'Not Found';
-			vm.location=res.data.location||'Not Found';
+			vm.data=res;
+			vm.name=res.data.name;
+			vm.location=res.data.location;
 			vm.loading.false;
 		}) 
 		}
@@ -28,6 +29,7 @@
 <input type="text" ng-model="user.name" name="enter">
 <button ng-click="vm.fetchdata(user)">Go!</button>
 <h4 ng-if="vm.loading===true">Loading...</h4>
+<h3>{{vm.data}}</h3>
 <h3 ng-hide="vm.data===false">{{vm.name}}---{{vm.location}}</h3>
 </body>
 </html>
