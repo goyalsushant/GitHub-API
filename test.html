@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Interacting with GitHub API</title>
+<script>
+	var app=angular.module('app',[]);
+	app.controller('MainCtrl', function($http){
+	var vm=this;
+	vm.data=false;
+	vm.fetchdata=function(user){
+	vm.loading=true;
+	$http.get('https://api.github.com/users/'+user.name).then(function(res)
+		{
+			vm.data=true;
+			vm.name=res.data.name|| 'Not Found';
+			vm.location=res.data.location||'Not Found';
+			vm.loading.false;
+		}) 
+		}
+	}) 
+</script>
+</head>
+<body ng-controller="MainCtrl as vm">
+<label for="enter">Enter a Username</label>
+<input type="text" ng-model="user.name" name="enter">
+<button ng-click="vm.fetchdata(user)">Go!</button>
+<h4 ng-if="vm.loading===true">Loading...</h4>
+<h3 ng-hide="vm.data===false">{{vm.name}}---{{vm.location}}</h3>
+</body>
+</html>
